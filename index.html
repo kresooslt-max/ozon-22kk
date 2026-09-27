@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StartAuto — Ozon Card Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">SA</div>
+        <div>
+          <div class="brand-name">StartAuto</div>
+          <div class="brand-sub">Ozon Card Manager</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-view="dashboard">▦ <span>Главная</span></button>
+        <button class="nav-item" data-view="products">◫ <span>Товары</span></button>
+        <button class="nav-item" data-view="editor">✎ <span>Редактор карточек</span></button>
+        <button class="nav-item" data-view="analytics">◔ <span>Аналитика</span></button>
+        <button class="nav-item" data-view="photos">▧ <span>Фото</span></button>
+        <button class="nav-item" data-view="research">⌕ <span>Исследование</span></button>
+      </nav>
+
+      <div class="sidebar-block">
+        <div class="block-title">Интеграции</div>
+        <div class="integration"><span class="dot green"></span> Ozon Seller API <span class="status">Demo</span></div>
+        <div class="integration"><span class="dot amber"></span> RIV.KZ <span class="status">Вход</span></div>
+        <div class="integration"><span class="dot blue"></span> Web research <span class="status">Вкл</span></div>
+      </div>
+
+      <div class="sidebar-bottom">
+        <button class="nav-item" data-view="settings">⚙ <span>Настройки</span></button>
+        <div class="user-card">
+          <div class="avatar">A</div>
+          <div><b>Admin</b><span>StartAuto</span></div>
+          <div class="more">•••</div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <div class="eyebrow" id="pageEyebrow">StartAuto</div>
+          <h1 id="pageTitle">Главная</h1>
+        </div>
+        <div class="top-actions">
+          <button class="ghost-btn" id="syncBtn">↻ Синхронизировать</button>
+          <button class="primary-btn" id="processBtn">✦ Обработать товары</button>
+        </div>
+      </header>
+
+      <section id="view-dashboard" class="view active-view">
+        <div class="kpi-grid">
+          <div class="kpi"><span>Всего товаров</span><strong id="kpiProducts">1 284</strong><small class="up">+36 за неделю</small></div>
+          <div class="kpi"><span>Готовы к публикации</span><strong id="kpiReady">942</strong><small class="up">73,4%</small></div>
+          <div class="kpi"><span>Нужно проверить</span><strong id="kpiReview">41</strong><small class="warn">OEM / применяемость</small></div>
+          <div class="kpi"><span>Продажи за 30 дней</span><strong id="kpiSales">₸ 8,42 млн</strong><small class="up">+12,8%</small></div>
+        </div>
+
+        <div class="content-grid two">
+          <div class="panel chart-panel">
+            <div class="panel-head"><div><h2>Продажи</h2><p>Выручка и заказы за последние 30 дней</p></div><select><option>30 дней</option><option>7 дней</option><option>90 дней</option></select></div>
+            <div class="chart-wrap">
+              <svg class="sales-chart" viewBox="0 0 760 280" preserveAspectRatio="none" aria-label="График продаж">
+                <defs>
+                  <linearGradient id="fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#1dd3b0" stop-opacity=".30"/><stop offset="100%" stop-color="#1dd3b0" stop-opacity="0"/></linearGradient>
+                </defs>
+                <path d="M0 215 C40 205, 70 220, 105 186 S170 148, 205 171 S275 125, 315 144 S370 120, 410 138 S470 82, 520 116 S590 58, 635 92 S700 50, 760 66 L760 280 L0 280 Z" fill="url(#fill)"/>
+                <path d="M0 215 C40 205, 70 220, 105 186 S170 148, 205 171 S275 125, 315 144 S370 120, 410 138 S470 82, 520 116 S590 58, 635 92 S700 50, 760 66" fill="none" stroke="#1dd3b0" stroke-width="4" stroke-linecap="round"/>
+                <g fill="#7b8497" font-size="12"><text x="0" y="270">01</text><text x="120" y="270">06</text><text x="240" y="270">11</text><text x="360" y="270">16</text><text x="480" y="270">21</text><text x="600" y="270">26</text><text x="730" y="270">30</text></g>
+              </svg>
+            </div>
+          </div>
+
+          <div class="panel"><div class="panel-head"><div><h2>Задачи</h2><p>Что требует внимания</p></div></div>
+            <div class="task-list">
+              <div class="task"><span class="task-icon red">!</span><div><b>14 товаров</b><span>Не найден точный OEM</span></div><button>Открыть</button></div>
+              <div class="task"><span class="task-icon amber">◈</span><div><b>8 товаров</b><span>Спорная применяемость</span></div><button>Проверить</button></div>
+              <div class="task"><span class="task-icon blue">▧</span><div><b>23 товара</b><span>Нет главного фото</span></div><button>Добавить</button></div>
+              <div class="task"><span class="task-icon green">✓</span><div><b>61 товар</b><span>Готовы к массовому обновлению</span></div><button>Показать</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel"><div class="panel-head"><div><h2>Последние товары</h2><p>Обновления по карточкам</p></div><button class="ghost-btn" data-view-link="products">Все товары →</button></div>
+          <div class="table-wrap">
+            <table><thead><tr><th>Артикул</th><th>Товар</th><th>OEM</th><th>Статус</th><th>Продажи</th><th></th></tr></thead>
+              <tbody id="recentBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-products" class="view">
+        <div class="toolbar"><div class="search"><span>⌕</span><input id="productSearch" placeholder="Артикул, название, OEM, модель..." /></div><div class="toolbar-right"><select id="statusFilter"><option value="all">Все статусы</option><option value="ready">Готово</option><option value="review">Проверка</option><option value="error">Ошибка</option></select><button class="ghost-btn">Экспорт Excel</button><button class="primary-btn">+ Новый товар</button></div></div>
+        <div class="panel"><div class="panel-head"><div><h2>Каталог</h2><p><span id="productCount">8</span> товаров в текущей выборке</p></div><div class="view-toggle"><button class="active">Таблица</button><button>Карточки</button></div></div>
+          <div class="table-wrap"><table><thead><tr><th><input type="checkbox" /></th><th>Артикул</th><th>Название</th><th>OEM</th><th>Применяемость</th><th>Статус</th><th>Обновлено</th><th></th></tr></thead><tbody id="productsBody"></tbody></table></div>
+        </div>
+      </section>
+
+      <section id="view-editor" class="view">
+        <div class="editor-grid">
+          <div class="panel editor-left"><div class="panel-head"><div><h2>Редактор карточки</h2><p>Подготовка данных перед публикацией</p></div><span class="badge amber">ИИ-черновик</span></div>
+            <div class="field"><label>Артикул</label><input value="HLT-805" id="editArticle" /></div>
+            <div class="field"><label>Название товара</label><input value="Фильтр салона угольный HLT-805 для BYD Song Plus" id="editTitle" /></div>
+            <div class="field"><label>OEM номера</label><input value="12675978-00; 12975836-00; 13033891-00" id="editOEM" /></div>
+            <div class="field"><label>Тип товара</label><select><option>Фильтр салона</option><option>Фильтр воздушный</option><option>Фильтр масляный</option><option>Фильтр топливный</option></select></div>
+            <div class="field"><label>Аннотация</label><textarea id="editDesc" rows="12">Описание: угольный салонный фильтр предназначен для очистки воздуха, поступающего в салон автомобиля. Подходит для автомобилей BYD Song Plus соответствующих модификаций. Перед заказом рекомендуется проверить совместимость по VIN и каталожному номеру штатного фильтра. OEM и кросс-номера: 12675978-00; 12975836-00; 13033891-00.</textarea></div>
+            <div class="field"><label>Хэштеги</label><input value="#фильтр_салона #салонный_фильтр #угольный_фильтр #byd #song_plus #автозапчасти #фильтр #автотовары #обслуживание #запчасти" /></div>
+            <div class="editor-actions"><button class="ghost-btn">Сохранить черновик</button><button class="ai-btn">✦ Проверить и улучшить</button><button class="primary-btn">Опубликовать в Ozon</button></div>
+          </div>
+          <div class="side-stack">
+            <div class="panel"><div class="panel-head"><div><h2>Результат проверки</h2><p>Автоматические предупреждения</p></div></div>
+              <div class="check-row ok"><span>✓</span><div><b>OEM подтверждён</b><small>Найдено 3 связанных номера</small></div></div>
+              <div class="check-row ok"><span>✓</span><div><b>Название заполнено</b><small>Структура соответствует шаблону</small></div></div>
+              <div class="check-row warn"><span>!</span><div><b>Применяемость требует проверки</b><small>Есть расхождения по годам</small></div></div>
+              <div class="check-row"><span>•</span><div><b>Фото</b><small>4 из 8 рекомендуемых</small></div></div>
+            </div>
+            <div class="panel"><div class="panel-head"><div><h2>Источники</h2><p>Откуда собраны данные</p></div></div>
+              <div class="source"><span class="source-dot cyan"></span><div><b>RIV.KZ</b><small>OEM и применяемость</small></div><span class="confidence">96%</span></div>
+              <div class="source"><span class="source-dot blue"></span><div><b>Ozon</b><small>похожие карточки</small></div><span class="confidence">91%</span></div>
+              <div class="source"><span class="source-dot green"></span><div><b>Каталоги</b><small>сверка номера</small></div><span class="confidence">88%</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-analytics" class="view">
+        <div class="toolbar"><div class="toolbar-left"><div class="range">Период: <b>01.09 — 30.09</b> ▾</div></div><div class="toolbar-right"><button class="ghost-btn">Скачать отчёт</button></div></div>
+        <div class="kpi-grid four"><div class="kpi"><span>Заказы</span><strong>1 148</strong><small class="up">+9,6%</small></div><div class="kpi"><span>Выручка</span><strong>₸ 8,42 млн</strong><small class="up">+12,8%</small></div><div class="kpi"><span>Конверсия</span><strong>4,72%</strong><small>+0,41 п.п.</small></div><div class="kpi"><span>Средний чек</span><strong>₸ 7 335</strong><small class="up">+2,9%</small></div></div>
+        <div class="content-grid two"><div class="panel"><div class="panel-head"><div><h2>Топ товаров по выручке</h2><p>За выбранный период</p></div></div><div class="rank-list"><div><span>01</span><b>Амортизатор задний Chevrolet Tracker</b><em>₸ 612 000</em></div><div><span>02</span><b>Ступица передняя Chevrolet Cobalt</b><em>₸ 488 000</em></div><div><span>03</span><b>Фильтр салона BYD Song Plus</b><em>₸ 376 500</em></div><div><span>04</span><b>Усилитель бампера Chevrolet Lacetti</b><em>₸ 281 000</em></div></div></div><div class="panel"><div class="panel-head"><div><h2>Поисковые запросы</h2><p>С чем находят товары</p></div></div><div class="query-list"><div><b>ступица chevrolet</b><span>↑ 18%</span></div><div><b>фильтр салона byd</b><span>↑ 12%</span></div><div><b>амортизатор tracker</b><span>↑ 8%</span></div><div><b>усилитель бампера cobalt</b><span>↑ 5%</span></div></div></div></div>
+      </section>
+
+      <section id="view-photos" class="view">
+        <div class="toolbar"><div class="search"><span>⌕</span><input placeholder="Найти товар по артикулу или названию..." /></div><div class="toolbar-right"><button class="ghost-btn">Из Ozon</button><button class="primary-btn">+ Загрузить фото</button></div></div>
+        <div class="panel"><div class="panel-head"><div><h2>Фото товаров</h2><p>Замена, порядок и загрузка изображений</p></div></div>
+          <div class="photo-editor"><div class="photo-card"><div class="photo-main"><div class="product-image">FILTER<br><span>HLT-805</span></div><button class="photo-badge">Главное</button></div><div class="thumbs"><div class="thumb active">01</div><div class="thumb">02</div><div class="thumb">03</div><div class="thumb">04</div><div class="thumb empty">+</div></div></div><div class="photo-info"><h3>Фильтр салона угольный HLT-805</h3><p>4 изображения загружено</p><div class="dropzone">Перетащите фото сюда или выберите файлы<br><small>JPG / PNG</small></div><div class="editor-actions"><button class="ghost-btn">Сохранить порядок</button><button class="primary-btn">Обновить в Ozon</button></div></div></div>
+        </div>
+      </section>
+
+      <section id="view-research" class="view">
+        <div class="research-hero"><div><span class="eyebrow">AI RESEARCH</span><h2>Исследование автозапчастей</h2><p>Артикул → RIV → OEM → применяемость → похожие карточки → проверка.</p></div><button class="ai-btn">✦ Запустить исследование</button></div>
+        <div class="content-grid two"><div class="panel"><div class="panel-head"><div><h2>Очередь</h2><p>Последние исследования</p></div></div><div class="queue"><div class="queue-row"><span class="queue-num">HLT-805</span><div><b>Фильтр салона</b><small>RIV найден • OEM найден • 96%</small></div><span class="badge green">Готово</span></div><div class="queue-row"><span class="queue-num">510243</span><div><b>Вкладыши шатунные</b><small>RIV не найден • Web search</small></div><span class="badge amber">Проверка</span></div><div class="queue-row"><span class="queue-num">13502873</span><div><b>Ступица задняя</b><small>OEM найден • применяемость сверена</small></div><span class="badge green">Готово</span></div></div></div><div class="panel"><div class="panel-head"><div><h2>Правила</h2><p>Именно по ним агент принимает решения</p></div></div><div class="rules"><div>✓ Короткий номер в начале строки = артикул</div><div>✓ OEM только после подтверждения</div><div>✓ Не подтверждено → не писать как факт</div><div>✓ Фото использовать только при необходимости</div><div>✓ Похожие Ozon-карточки = стиль, не источник фактов</div></div></div></div>
+      </section>
+
+      <section id="view-settings" class="view"><div class="panel"><div class="panel-head"><div><h2>Настройки</h2><p>Подключения и правила StartAuto</p></div></div><div class="settings-grid"><div><h3>Ozon Seller API</h3><p>Client-Id и Api-Key хранятся на сервере, в браузер их не отдаём.</p><button class="primary-btn">Подключить</button></div><div><h3>RIV.KZ</h3><p>Авторизованная браузерная сессия для поиска товара по артикулу.</p><button class="ghost-btn">Настроить</button></div><div><h3>AI-модель</h3><p>Модуль исследования с несколькими провайдерами и резервным режимом.</p><button class="ghost-btn">Настроить</button></div><div><h3>Хранилище фото</h3><p>Для карточек и изображений нужен отдельный storage с прямыми URL.</p><button class="ghost-btn">Настроить</button></div></div></div></section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
